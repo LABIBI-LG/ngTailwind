@@ -1,3 +1,30 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer components {
+  .card {
+    border: 2px solid theme('colors.dark');
+    box-shadow: -8px 8px 0px #00040029;
+  }
+
+  .btn {
+    padding: 8px;
+    border: 2px solid theme('colors.dark');
+    box-shadow: -2px 2px 0px theme('colors.dark');
+    background-color: theme('colors.secondary');
+    color: theme('colors.white');
+    border-radius: 8px;
+  }
+
+  .btn:hover {
+    background-color: theme('colors.blue.600');
+  }
+
+  input[type=text],
+  input[type=password] {
+    background-color: theme('colors.white');
+    padding: 5px;
+    border: 2px solid theme('colors.dark');
+  }
+}

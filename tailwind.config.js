@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: {
     enabled: true,
@@ -9,22 +12,22 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    screens: {
-      'sm': '640px',
-      // => @media (min-width: 640px) { ... }
-      'md': '768px',
-      // => @media (min-width: 768px) { ... }
-      'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-      'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
-      '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
-    },
-    extend: {}
+    extend: {
+      colors: {
+        primary: '#EFECE7',
+        secondary: '#03438D',
+        dark: '#000400'
+      }
+    }
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addBase, theme }) {
+      addBase({
+        'h1': { fontSize: theme('fontSize.5xl') },
+        'h2': { fontSize: theme('fontSize.xl') },
+        'h3': { fontSize: theme('fontSize.lg') },
+      })
+    }),
+    require('tailwindcss-filters'),
+  ],
 };
